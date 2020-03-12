@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      <img src="../../assets/images/logo.png">
+    <ion-title class="header">
+      <img src="../../assets/images/logo-blanc.png">
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <img src="../../assets/images/logo-blanc.png">
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-button expand="full" fill="clear" class="menu i1">
+      <p class="text-menu">Mon compte</p>
+    </ion-button>
+    <ion-button expand="full" fill="clear" class="menu i2">
+      <p class="text-menu">Ma liste</p>
+    </ion-button>
+    <ion-button expand="full" fill="clear" class="menu i3">
+      <p class="text-menu">Scanner</p>
+    </ion-button>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>About|Contact</ion-title>
+  </ion-toolbar>
+</ion-footer>
