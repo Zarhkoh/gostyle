@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'coupon-list',
     loadChildren: () => import('./coupon-list/coupon-list.module').then( m => m.CouponListPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
