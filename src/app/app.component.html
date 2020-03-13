@@ -1,3 +1,27 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header *ngIf="!showFooterHeader()">
+    <ion-toolbar>
+      <div class="spaceBetween"><ion-buttons slot="start">
+        <ion-back-button class="iconBack" defaultHref="home">
+
+        </ion-back-button>
+      </ion-buttons>
+<!--        <ion-icon class="iconHead" name="chevron-back-outline"></ion-icon>-->
+        <img src="../../assets/images/logo-blanc.png">
+        <ion-icon class="iconHead" name="power-outline"></ion-icon>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+
+  <ion-footer *ngIf="!showFooterHeader()">
+    <div class="spaceBetween">
+      <ion-icon class="iconFoot" name="home-outline"></ion-icon>
+      <ion-icon class="iconFoot" name="scan-outline"></ion-icon>
+      <ion-icon class="iconFoot" name="list-outline"></ion-icon>
+    </div>
+  </ion-footer>
 </ion-app>
