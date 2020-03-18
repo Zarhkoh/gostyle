@@ -17,11 +17,11 @@
         $ npm install
 
 ## Start project
-- __open terminal in project folder__
+- open terminal in project folder
 
         $ ionic serve
     
-- __open browser on http://localhost:8100__
+- open browser on http://localhost:8100
 
 
 ## Build Application for iOS (on MacOS Only)
@@ -45,12 +45,12 @@ You can run your app on a simulated device or install it on your own iPhone (mak
 - Chose your Device:
     ![Xcode device selection](https://imgur.com/DxXw2GN.png)
 
- - Add Apple ID (not required for emulated devices):
+ - Add Apple ID (**not required for emulated devices**):
  
       - in Xcode, go into Preferences > Accounts & add your Apple ID
 
 
-- configure Development Team in "Signing & capabilities" options:
+- configure Development Team in "Signing & capabilities" options (**not required for emulated devices**):
 ![Xcode development team selection](https://imgur.com/dDMiWkl.png)
 
 
