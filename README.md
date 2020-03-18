@@ -46,10 +46,10 @@ open terminal in project folder
 - In Xcode, open project (Gostyle/platforms/ios/MyApp.xcodeproj)
 
 - Chose your Device. 
-![Xcode device selection](https://imgur.com/DxXw2GN)
+![Xcode device selection](https://imgur.com/DxXw2GN.png)
 
 - hit "build" button
-![Xcode build button](https://imgur.com/a/vhf4w49)
+![Xcode build button](https://imgur.com/a/vhf4w49.png)
 
 ##### if you chose to build on your iPhone
 
