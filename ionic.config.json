@@ -1,5 +1,7 @@
 {
   "name": "gostyle",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
