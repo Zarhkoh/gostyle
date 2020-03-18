@@ -1,81 +1,60 @@
 #Go Style QR Code Reader mobile application
 
-##How to start
 
-#### 1) Prerequisites
-Install [NodeJS](https://nodejs.org/en/download/).
+## Prerequisites
+- __Install [NodeJS](https://nodejs.org/en/download/).__
 
-in terminal:
+- __Install Ionic:__
 
-    $ npm install -g @ionic/cli
-  
-
-#### 2) install project
-open terminal in project folder
-
-    $ npm install
-
-
-#### 3) start project
-open terminal in project folder
-
-    $ ionic serve
+    - in terminal:
     
-open browser on http://localhost:8100
+             $ npm install -g @ionic/cli
+ 
+
+## Project Installation
+- open terminal in project folder
+
+        $ npm install
+
+## Start project
+- __open terminal in project folder__
+
+        $ ionic serve
+    
+- __open browser on http://localhost:8100__
 
 
-### 4) build Application for iOS (on MacOS Only)
+## Build Application for iOS (on MacOS Only)
 
-You can run your app on a simulated device or install it on your own iPhone (makes sure your iPhone is connected by USB). 
-Note: if you chose to build on simulated device, camera won't work.
-
-
-#### if you chose to build on emulated device
+You can run your app on a simulated device or install it on your own iPhone (makes sure your iPhone is connected by USB).
+>Note: if you chose to build on simulated device, camera won't work.
 
 - Install Xcode from AppStore
 
 - Once Xcode is installed, make sure the command-line tools are selected for use:
+    
+             $ xcode-select --install
+        
+- Build app for iOS:
+    - open terminal in project folder:
 
-    $ xcode-select --install
-
-- prepare app to run on iOS:
-open terminal in project folder
-
-    $ ionic cordova prepare ios
-
-- In Xcode, open project (Gostyle/platforms/ios/MyApp.xcodeproj)
-
-- Chose your Device. 
-![Xcode device selection](https://imgur.com/DxXw2GN.png)
-
-- hit "build" button
-![Xcode build button](https://imgur.com/a/vhf4w49.png)
-
-##### if you chose to build on your iPhone
-
-- Install Xcode from AppStore
-
-- Add Apple ID on Xcode
-in Xcode, go into Preferences > Accounts & add your Apple ID
-
-- Once Xcode is installed, make sure the command-line tools are selected for use:
-
-    $ xcode-select --install
-
-- prepare app to run on iOS:
-open terminal in project folder
-
-    $ ionic cordova prepare ios
+             $ ionic cordova prepare ios
 
 - In Xcode, open project (Gostyle/platforms/ios/MyApp.xcodeproj)
 
-- Chose your Device. 
-![Xcode device selection](https://imgur.com/DxXw2GN.png)
+- Chose your Device:
+    ![Xcode device selection](https://imgur.com/DxXw2GN.png)
 
-- configure Development Team in "Signing & capabilities" options
+ - Add Apple ID (not required for emulated devices):
+ 
+      - in Xcode, go into Preferences > Accounts & add your Apple ID
+
+
+- configure Development Team in "Signing & capabilities" options:
 ![Xcode development team selection](https://imgur.com/dDMiWkl.png)
 
-- hit "build" button
-![Xcode build button](https://imgur.com/a/vhf4w49.png)
+
+- hit "build" button:
+    ![Xcode build button](https://i.imgur.com/n7B5DZp.png)
 
 
