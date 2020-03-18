@@ -1,4 +1,4 @@
-#Go Style QR Code Reader mobile application
+# Go Style QR Code Reader mobile application
 
 
 ## Prerequisites
