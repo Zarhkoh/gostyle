@@ -58,3 +58,24 @@ You can run your app on a simulated device or install it on your own iPhone (mak
     ![Xcode build button](https://i.imgur.com/n7B5DZp.png)
 
 
+## Build Application for Android (on your Phone)
+
+Your phone must be connected to your computer in debug mode.
+
+- Activate debug mode :
+
+    - Go to phone "Settings" -> click on "System" -> "About phone" -> And click several on "Build number".
+
+The debug mode is activated.
+
+- Build app for Android:
+    - open terminal in project folder:
+
+             $ ionic cordova prepare android
+
+- Run app on Android :
+    - open terminal in project folder :
+
+            $ ionic cordova run android -l
+            
+Your application is built and launched on your phone.
