@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CouponService } from '../service/coupon.service';
 
 @Component({
   selector: 'app-coupon-list',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CouponListPage implements OnInit {
 
-  constructor() { }
+  couponList;
+
+  constructor(private couponService: CouponService) { }
 
   ngOnInit() {
+    console.log('ngOnInit');
+    this.getCouponList();
   }
+
+  getCouponList() {
+    console.log('début fonction get');
+    this.couponList = this.couponService.getAllCoupons().subscribe((data) => this.couponList = data);
+    console.log('les coupons:' + this.couponList);
+  }
+
 
 }
