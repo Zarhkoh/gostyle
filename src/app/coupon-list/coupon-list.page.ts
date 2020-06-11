@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CouponService } from '../service/coupon.service';
+import { DbService } from '../service/db.service';
+
 
 @Component({
   selector: 'app-coupon-list',
@@ -10,11 +12,11 @@ export class CouponListPage implements OnInit {
 
   couponList;
 
-  constructor(private couponService: CouponService) { }
+  constructor(private couponService: CouponService, private dbService: DbService) { }
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.getCouponList();
+    this.getLocalCouponList();
   }
 
   getCouponList() {
@@ -23,5 +25,10 @@ export class CouponListPage implements OnInit {
     console.log('les coupons:' + this.couponList);
   }
 
+  getLocalCouponList() {
+    console.log("START GET COUPONLIST");
+    this.dbService.getCouponList();
+    console.log('les coupons:' + this.couponList);
+  }
 
 }

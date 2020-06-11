@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
-import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-scanner',
@@ -56,7 +55,6 @@ export class ScannerPage implements OnInit {
         }
       }]
     });
-
     await alert.present();
   }
 
