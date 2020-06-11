@@ -26,8 +26,8 @@ export class CouponListPage implements OnInit {
   }
 
   getLocalCouponList() {
-    console.log("START GET COUPONLIST");
-    this.dbService.getCouponList();
+    console.log("GET COUPONLIST");
+    this.dbService.getCouponsListTest();
     console.log('les coupons:' + this.couponList);
   }
 
