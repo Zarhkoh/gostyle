@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
-import { HomePage } from '../home/home.page';
+import { CouponService } from '../service/coupon.service';
 
 @Component({
   selector: 'app-scanner',
@@ -9,13 +9,14 @@ import { HomePage } from '../home/home.page';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage implements OnInit {
-
-  constructor(private qrScanner: QRScanner, public alertController: AlertController) {
+  couponsList;
+  constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService) {
     this.scancode();
   }
 
   scannedCodeText = 'none';
   ngOnInit() {
+    this.checkifCodeIsValid();
   }
 
   scancode() {
@@ -56,8 +57,13 @@ export class ScannerPage implements OnInit {
         }
       }]
     });
-
     await alert.present();
+  }
+
+  checkifCodeIsValid() {
+    console.log('début fonction get');
+    this.couponService.getAllCoupons().subscribe((data) => this.couponsList = data);
+    console.log('les coupons:' + this.couponsList);
   }
 
 }

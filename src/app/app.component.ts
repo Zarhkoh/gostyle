@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { DbService } from './service/db.service';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private dbService: DbService
   ) {
     this.initializeApp();
   }
@@ -25,6 +28,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.dbService.createDb();
+      this.dbService.create_tables();
+      this.dbService.inset_coupon_data();
     });
   }
   showFooterHeader() {
