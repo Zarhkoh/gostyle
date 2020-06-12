@@ -28,9 +28,11 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.dbService.createDb();
-      this.dbService.create_tables();
-      this.dbService.inset_coupon_data();
+      if (!this.platform.is("desktop")) {
+        this.dbService.createDb();
+        this.dbService.create_tables();
+        this.dbService.inset_coupon_data();
+      }
     });
   }
   showFooterHeader() {
