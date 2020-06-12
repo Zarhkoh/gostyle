@@ -4,7 +4,6 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { DbService } from './service/db.service';
 
 
@@ -30,6 +29,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.dbService.createDb();
+      this.dbService.create_tables();
+      this.dbService.inset_coupon_data();
     });
   }
   showFooterHeader() {
