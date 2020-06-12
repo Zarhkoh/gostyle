@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { Coupon } from '../models/coupon';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  public db: SQLiteObject;
+  private database: SQLiteObject;
 
   constructor(private sqlite: SQLite) { }
 
@@ -17,22 +18,19 @@ export class DbService {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        this.db = db;
+        this.database = db;
       })
       .catch(e => console.log(e));
   }
 
-  getCouponList() {
-    return this.db.executeSql('SELECT * FROM coupon', []);
-  }
 
   addCoupon(code, discount, description, dateDebut, dateFin) {
-    return this.db.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', [code, discount, description, dateDebut, dateFin]);
+    return this.database.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', [code, discount, description, dateDebut, dateFin]);
   }
 
-  getCouponsListTest() {
+  getCouponsList() {
     console.log("getCouponsListTest called");
-    return this.db.executeSql('SELECT * FROM coupon', []).then(res => {
+    this.database.executeSql('SELECT * FROM coupon', []).then(res => {
       let coupons: Coupon[] = [];
       if (res.rows.length > 0) {
         console.log("ITEMS: " + JSON.stringify(res.rows));
@@ -46,30 +44,26 @@ export class DbService {
             date_fin: res.rows.item(i).date_fin
           });
         }
-      } else {
-        console.log("pas de coupons");
-        return "pas de coupons";
       }
       return coupons;
     });
-    return null;
   }
+
   create_tables() {
     console.log("TABLE CREATION");
-    this.db.executeSql(" INSERT INTO coupon (code_coupon,discount, description,date_debut,date_fin) VALUES ('TEST456',19,'19 % sur les pantalons','2020 / 01 / 24','2020 / 06 / 20')", [])
+    this.database.executeSql('create table if not exists coupon(code_coupon VARCHAR(15) PRIMARY KEY,discount INTEGER, description VARCHAR(15),date_debut DATE,date_fin DATE)', []).then(data => console.log(data))
       .catch(e => console.log(e));
     console.log("TABLE CEEE?");
   }
   drop_db() {
     console.log("TABLE DROP");
-    this.db.executeSql("DELETE FROM coupon", [])
+    this.database.executeSql("DELETE FROM coupon", [])
       .catch(e => console.log(e));
     console.log("TABLE DROPPED");
   }
   inset_coupon_data() {
-    console.log("DATA INSERT");
-    this.db.executeSql('create table if not exists coupon(code_coupon VARCHAR(15) PRIMARY KEY,discount INTEGER, description VARCHAR(15),date_debut DATE,date_fin DATE)', [])
+    this.database.executeSql(" INSERT INTO coupon (code_coupon,discount, description,date_debut,date_fin) VALUES ('TEST456',19,'19 % sur les pantalons','2020 / 01 / 24','2020 / 06 / 20')", []).then(data => console.log(data))
       .catch(e => console.log(e));
-    console.log("DATA INSERT");
   }
+
 }

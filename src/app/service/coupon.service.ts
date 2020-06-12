@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CouponService {
 
-  url = 'http://localhost:3000/api/coupons';
+  url = 'http://localhost:3000/coupons';
 
   constructor(private http: HttpClient) { }
 
