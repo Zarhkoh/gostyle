@@ -16,14 +16,7 @@ export class CouponListPage implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.getCouponList();
     this.getLocalCouponList();
-  }
-
-  getCouponList() {
-    console.log('début fonction get');
-    this.couponList = this.couponService.getAllCoupons().subscribe((data) => this.couponList = data);
-    console.log('les coupons:' + this.couponList);
   }
 
   getLocalCouponList() {
@@ -33,7 +26,7 @@ export class CouponListPage implements OnInit {
 
   addCoupon() {
     console.log("service ajour data");
-    let test = this.dbService.inset_coupon_data();
+    this.dbService.inset_coupon_data();
     console.log("fin ajout data: ");
   }
 }

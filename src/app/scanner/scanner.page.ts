@@ -10,7 +10,6 @@ import { CouponService } from '../service/coupon.service';
 })
 export class ScannerPage implements OnInit {
   couponsList;
-
   constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService) {
     this.scancode();
   }
@@ -29,7 +28,6 @@ export class ScannerPage implements OnInit {
           // start scanning
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             this.scannedCodeText = text;
-            this.checkifCodeIsValid();
             this.presentAlert();
             this.qrScanner.hide(); // hide camera preview
             scanSub.unsubscribe(); // stop scanning
@@ -63,8 +61,9 @@ export class ScannerPage implements OnInit {
   }
 
   checkifCodeIsValid() {
+    console.log('début fonction get');
     this.couponService.getAllCoupons().subscribe((data) => this.couponsList = data);
-    console.log("COUPONS: ", this.couponsList);
+    console.log('les coupons:' + this.couponsList);
   }
 
 }
