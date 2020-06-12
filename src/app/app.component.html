@@ -1,19 +1,20 @@
 <ion-app>
   <ion-header *ngIf="!showFooterHeader()">
     <ion-toolbar>
-      <div class="spaceBetween"><ion-buttons slot="start">
-        <ion-back-button class="iconBack" defaultHref="home">
+      <div class="spaceBetween">
+        <ion-buttons slot="start">
+          <ion-back-button class="iconBack" defaultHref="home">
 
-        </ion-back-button>
-      </ion-buttons>
-<!--        <ion-icon class="iconHead" name="chevron-back-outline"></ion-icon>-->
+          </ion-back-button>
+        </ion-buttons>
+        <!--        <ion-icon class="iconHead" name="chevron-back-outline"></ion-icon>-->
         <img src="../../assets/images/logo-blanc.png">
         <ion-icon class="iconHead" name="power-outline"></ion-icon>
       </div>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding">
+  <ion-content [ngClass]="{'tranparent-bg ' : router.url == '/scanner'}" class="ion-padding">
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 

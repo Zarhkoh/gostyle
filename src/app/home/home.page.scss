@@ -1,10 +1,10 @@
 img {
   width: 40%;
 }
-header{
+header {
   text-align: center !important;
 }
-ion-header{
+ion-header {
   text-align: center;
 }
 .menu {
@@ -14,7 +14,7 @@ ion-header{
 }
 
 .text-menu {
-  background-color:rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   color: #000000;
   padding: 20px;
   font-weight: bold;
@@ -22,16 +22,16 @@ ion-header{
   border-radius: 5px;
 }
 
-.i1{
-  background-image: url('https://www.arkko.fr/wp-content/uploads/2015/03/streetwear-2-e1426673987652.jpg') !important;
+.i1 {
+  background-image: url("https://www.arkko.fr/wp-content/uploads/2015/03/streetwear-2-e1426673987652.jpg") !important;
 }
 
-.i2{
-  background-image: url('https://img.over-blog-kiwi.com/1020x765/1/30/75/97/obpicL1xRTa.jpeg') !important;
+.i2 {
+  background-image: url("https://img.over-blog-kiwi.com/1020x765/1/30/75/97/obpicL1xRTa.jpeg") !important;
 }
 
-.i3{
-  background-image: url('https://media1-production-mightynetworks.imgix.net/asset/3644175/screen_shot_2017-10-17_at_2.25.33_pm.png?ixlib=rails-0.3.0&fm=jpg&q=75&auto=format') !important;
+.i3 {
+  background-image: url("https://media1-production-mightynetworks.imgix.net/asset/3644175/screen_shot_2017-10-17_at_2.25.33_pm.png?ixlib=rails-0.3.0&fm=jpg&q=75&auto=format") !important;
 }
 
 #container {
@@ -60,8 +60,4 @@ ion-header{
 
 #container a {
   text-decoration: none;
-}
-
-ion-content ion-toolbar {
-  --background: translucent;
 }
