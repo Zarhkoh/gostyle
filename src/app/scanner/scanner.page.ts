@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
 import { CouponService } from '../service/coupon.service';
+import { Coupon } from '../models/coupon';
+import { DbService } from '../service/db.service';
 
 @Component({
   selector: 'app-scanner',
@@ -9,14 +11,13 @@ import { CouponService } from '../service/coupon.service';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage implements OnInit {
-  couponsList;
-  constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService) {
+  couponsList: Coupon[] = [];
+  constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService, private dbService: DbService) {
     this.scancode();
   }
 
   scannedCodeText = 'none';
   ngOnInit() {
-    this.checkifCodeIsValid();
   }
 
   scancode() {
@@ -28,6 +29,8 @@ export class ScannerPage implements OnInit {
           // start scanning
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             this.scannedCodeText = text;
+            console.log("code trouvé");
+            this.checkifCodeIsValid(this.scannedCodeText);
             this.presentAlert();
             this.qrScanner.hide(); // hide camera preview
             scanSub.unsubscribe(); // stop scanning
@@ -59,11 +62,12 @@ export class ScannerPage implements OnInit {
     });
     await alert.present();
   }
+  checkifCodeIsValid(code) {
+    console.log('check if valide');
+    this.couponService.getCouponByCode(code).subscribe((data) => {
+      this.dbService.addCoupon(data);
+      console.log("sans stringify: ", data);
+    });
 
-  checkifCodeIsValid() {
-    console.log('début fonction get');
-    this.couponService.getAllCoupons().subscribe((data) => this.couponsList = data);
-    console.log('les coupons:' + this.couponsList);
   }
-
 }

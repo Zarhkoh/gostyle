@@ -24,8 +24,8 @@ export class DbService {
   }
 
 
-  addCoupon(code, discount, description, dateDebut, dateFin) {
-    return this.database.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', [code, discount, description, dateDebut, dateFin]);
+  addCoupon(coupon) {
+    return this.database.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', [coupon.code_coupon, coupon.discount, coupon.description, coupon.dateDebut, coupon.dateFin]);
   }
 
   getCouponsList() {
