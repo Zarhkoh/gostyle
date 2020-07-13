@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { Coupon } from '../models/coupon';
 import { Platform } from '@ionic/angular';
-import { formatDate } from '@angular/common';
 
 
 @Injectable({
@@ -23,7 +22,7 @@ export class DbService {
       .then((db: SQLiteObject) => {
         this.storage = db;
         console.log("DB CREATED");
-      }).then(() => this.create_tables())
+      }).then(() => this.create_tables()).then(() => this.drop_db())
       .catch(e => console.log("BUG CREATION: ", JSON.stringify(e)));
   }
 
@@ -65,10 +64,6 @@ export class DbService {
     this.storage.executeSql("DELETE FROM coupon")
       .catch(e => console.log("BUG TABLE DROP: ", JSON.stringify(e)));
     console.log("TABLE DROPPED");
-  }
-  insert_coupon_data() {
-    this.storage.executeSql(" INSERT INTO coupon (code_coupon,discount, description,date_debut,date_fin) VALUES ('TEST456',19,'19 % sur les pantalons','2020 / 01 / 24','2020 / 06 / 20')", []).then(data => console.log("Fake data added: ", data))
-      .catch(e => console.log("BUG INSERT FAKE DATA: ", JSON.stringify(e)));
   }
 
 }

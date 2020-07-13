@@ -34,8 +34,6 @@ export class AppComponent {
         this.dbService.drop_db();
         console.log("Ajout tables");
         this.dbService.create_tables();
-        console.log("Ajout fake datas");
-        this.dbService.insert_coupon_data();
         console.log("EVERYTHING OK");
       }
     });
