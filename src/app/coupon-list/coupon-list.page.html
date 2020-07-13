@@ -1,12 +1,14 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>couponList</ion-title>
+        <ion-title id="titleCouponsList">LISTE DES COUPONS</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <h3>les coupons</h3>
-    <div *ngFor="let coupon of couponsList">
-        <button (click)="setShowAccordion(coupon.code_coupon)">{{coupon.code_coupon}}</button>
-        <div *ngIf="showAccordion == coupon.code_coupon">coupon.description</div>
+    <div *ngFor="let coupon of couponsList" class="divCouponsList">
+        <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}</button>
+        <div *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
+            <p>{{ coupon.description }}</p>
+            <p>Validé : {{ coupon.date_debut | date:"dd/MM/yy" }} au {{ coupon.date_fin | date:"dd/MM/yy" }}</p>
+        </div>
     </div>
 </ion-content>
