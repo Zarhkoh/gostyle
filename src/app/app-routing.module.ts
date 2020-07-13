@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { 
+    path: 'home', 
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
   {
     path: 'account',
     loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
@@ -21,9 +24,18 @@ const routes: Routes = [
     loadChildren: () => import('./coupon-list/coupon-list.module').then( m => m.CouponListPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    path: 'auth',
+    loadChildren: () => import('./layout/auth/auth.module').then( m => m.AuthPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./layout/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./layout/register/register.module').then( m => m.RegisterPageModule)
+  },
+
 ];
 
 @NgModule({

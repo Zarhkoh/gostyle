@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <form #loginForm="ngForm" (ngSubmit)="login()">
+    <img src="../../assets/images/logo-blanc.png">
+    <ion-input name="email" placeholder="Email" [(ngModel)]="user.email" required></ion-input>
+    <ion-input type="password" name="password" placeholder="Password" [(ngModel)]="user.pwd" required></ion-input>
+    <ion-button type="submit" [disabled]="!loginForm.form.valid">VALIDER</ion-button>
+  </form> -->
+  <form [formGroup]="creationForm" (ngSubmit)="loginUser()">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input type="password" formControlName="pwd"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!creationForm.valid">VALIDER</ion-button>
+  </form>
+</ion-content>
