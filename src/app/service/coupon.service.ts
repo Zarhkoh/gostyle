@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Coupon } from '../models/coupon';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CouponService {
 
-  url = 'http://localhost:3000';
+  url = 'http://zarhkoh:3000';
 
   constructor(private http: HttpClient) { }
 

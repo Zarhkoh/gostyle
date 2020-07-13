@@ -15,7 +15,7 @@ export class ScannerPage implements OnInit {
   constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService, private dbService: DbService) {
     this.scancode();
   }
-
+  tempo;
   scannedCodeText = 'none';
   ngOnInit() {
   }
@@ -63,11 +63,12 @@ export class ScannerPage implements OnInit {
     await alert.present();
   }
   checkifCodeIsValid(code) {
-    console.log('check if valide');
+    console.log('check if ' + code + 'valide');
     this.couponService.getCouponByCode(code).subscribe((data) => {
-      this.dbService.addCoupon(data);
-      console.log("sans stringify: ", data);
+      console.log("DATA RECUE: ", data);
+      this.tempo = data;
+      console.log("SEND TO ENREGISTREMENT: ", data);
+      this.dbService.addCoupon(this.tempo);
     });
-
   }
 }
