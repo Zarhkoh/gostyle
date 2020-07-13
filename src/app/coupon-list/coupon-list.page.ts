@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CouponService } from '../service/coupon.service';
 import { DbService } from '../service/db.service';
 import { Platform } from '@ionic/angular';
-import { Coupon } from '../models/coupon';
 
+import { Coupon } from '../models/coupon';
 
 @Component({
   selector: 'app-coupon-list',
