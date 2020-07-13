@@ -5,5 +5,8 @@
 </ion-header>
 <ion-content>
     <h3>les coupons</h3>
-    <div *ngFor="let coupon of couponsList">id du coupon : {{coupon.code_coupon}}</div>
+    <div *ngFor="let coupon of couponsList">
+        <button (click)="setShowAccordion(coupon.code_coupon)">{{coupon.code_coupon}}</button>
+        <div *ngIf="showAccordion == coupon.code_coupon">coupon.description</div>
+    </div>
 </ion-content>

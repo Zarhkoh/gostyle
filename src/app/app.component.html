@@ -14,11 +14,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content [ngClass]="{'tranparent-bg ' : router.url == '/scanner'}" class="ion-padding">
+  <ion-content [ngClass]="{'tranparent-bg' : router.url == '/scanner','black-bg' : router.url != '/scanner'}"
+    class="ion-padding" *ngIf="router.url != '/scanner'">
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 
-  <ion-footer *ngIf="!showFooterHeader()">
+  <ion-footer *ngIf="router.url != '/home'">
     <div class="spaceBetween">
       <ion-icon class="iconFoot" name="home-outline"></ion-icon>
       <ion-icon class="iconFoot" name="scan-outline"></ion-icon>

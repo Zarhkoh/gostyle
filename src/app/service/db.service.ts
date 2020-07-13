@@ -27,12 +27,15 @@ export class DbService {
   }
 
   addCoupon(coupon) {
-    const dateDebut = new Date(coupon.date_debut);
-    console.log("DATE?; ", dateDebut.getDate);
     let data = [coupon.code_coupon, coupon.description, coupon.discount, coupon.date_debut, coupon.date_fin];
     console.log("nature, rdy to db: ", data);
     this.storage.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', data).then((data) => console.log(JSON.stringify(data)))
       .catch(e => console.log("BUG INSERT: ", JSON.stringify(e)));
+  }
+
+  deleteCouponByCode(couponCode) {
+    this.storage.executeSql('DELETE FROM coupon WHERE code_coupon=(?)', couponCode).then((data) => console.log(JSON.stringify(data)))
+      .catch(e => console.log("BUG DELETE: ", JSON.stringify(e)));
   }
 
   getCouponsList() {
