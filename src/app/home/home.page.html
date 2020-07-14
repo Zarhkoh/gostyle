@@ -1,17 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-title>
-      <div>
-        <img class="logoBlanc" src="../../assets/images/logo-blanc.png">
-      </div>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
       <img class="logoNoir" src="../../assets/images/logo-blanc.png">
+      <ion-icon id="logout-icon" name="power-outline" [routerLink]="['/auth']">
+      </ion-icon>
     </ion-toolbar>
   </ion-header>
 

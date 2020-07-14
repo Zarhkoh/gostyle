@@ -6,11 +6,18 @@ img {
   display: flex;
   justify-content: space-between;
 }
+
 .iconHead {
   margin: 2%;
   font-size: 30px;
   color: #fff;
 }
+.invisibleIconHead {
+  margin: 2%;
+  font-size: 30px;
+  color: transparent;
+}
+
 .iconBack {
   color: #ffffff;
 }

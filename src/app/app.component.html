@@ -1,12 +1,17 @@
 <ion-app>
-  <ion-header *ngIf="router.url != '/home'">
+  <ion-header *ngIf="router.url != '/home' && router.url != '/auth'">
     <ion-toolbar>
-      <div class="spaceBetween">
-        <ion-back-button class="iconBack" defaultHref="home">
-
+      <div class="d-flex spaceBetween">
+        <ion-back-button *ngIf="router.url !== '/login' && router.url !== '/register' " class="iconBack"
+          defaultHref="home">
         </ion-back-button>
-        <img src="../../assets/images/logo-blanc.png">
-        <ion-icon class="iconHead" name="power-outline" [routerLink]="['/login']">
+        <ion-back-button *ngIf="router.url === '/login' || router.url === '/register' " class="iconBack"
+          defaultHref="auth">
+        </ion-back-button>
+        <img id="headerLogo" src="../../assets/images/logo-blanc.png">
+        <ion-icon id="logout-icon" name="power-outline"
+          [ngClass]="{'invisibleIconHead': router.url === '/login' || router.url === '/register','iconHead' :router.url !== '/login' && router.url !== '/register'}"
+          [routerLink]="['/auth']">
         </ion-icon>
       </div>
     </ion-toolbar>
@@ -20,7 +25,7 @@
     *ngIf="router.url != '/home' && router.url != '/auth' && router.url != '/register' && router.url != '/login'"
     [ngClass]="{'black-bg' : router.url != '/scanner'}">
     <div class="spaceBetween">
-      <ion-icon id="home-footer" [routerLink]="['/home']"class="iconFoot" name="home-outline"></ion-icon>
+      <ion-icon id="home-footer" [routerLink]="['/home']" class="iconFoot" name="home-outline"></ion-icon>
       <ion-icon id="scanner-footer" [routerLink]="['/scanner']" class="iconFoot" name="scan-outline"></ion-icon>
       <ion-icon id="coupon-list-footer" [routerLink]="['/coupon-list']" class="iconFoot" name="list-outline"></ion-icon>
     </div>
