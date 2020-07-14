@@ -2,28 +2,40 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
   {
     path: 'account',
-    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
+    loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
   },
   {
     path: 'contact',
-    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+    loadChildren: () => import('./contact/contact.module').then(m => m.ContactPageModule)
   },
   {
     path: 'scanner',
-    loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule)
+    loadChildren: () => import('./scanner/scanner.module').then(m => m.ScannerPageModule)
   },
   {
     path: 'coupon-list',
-    loadChildren: () => import('./coupon-list/coupon-list.module').then( m => m.CouponListPageModule)
+    loadChildren: () => import('./coupon-list/coupon-list.module').then(m => m.CouponListPageModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./layout/auth/auth.module').then(m => m.AuthPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./layout/login/login.module').then(m => m.LoginPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./layout/register/register.module').then(m => m.RegisterPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@ import { Coupon } from '../models/coupon';
   styleUrls: ['./coupon-list.page.scss'],
 })
 export class CouponListPage implements OnInit {
+  showAccordion;
 
   couponsList: Coupon[];
 
@@ -32,5 +33,12 @@ export class CouponListPage implements OnInit {
 
   getLocalCouponList() {
     this.couponsList = this.dbService.getCouponsList();
+  }
+  deleteCouponFromLocalList(couponCode) {
+    this.dbService.deleteCouponByCode(couponCode);
+  }
+
+  setShowAccordion(data) {
+    this.showAccordion = data;
   }
 }

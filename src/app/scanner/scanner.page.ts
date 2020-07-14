@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { CouponService } from '../service/coupon.service';
 import { Coupon } from '../models/coupon';
 import { DbService } from '../service/db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scanner',
@@ -12,10 +13,9 @@ import { DbService } from '../service/db.service';
 })
 export class ScannerPage implements OnInit {
   couponsList: Coupon[] = [];
-  constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService, private dbService: DbService) {
+  constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService, private dbService: DbService, private router: Router) {
     this.scancode();
   }
-  tempo;
   scannedCodeText = 'none';
   ngOnInit() {
   }
@@ -29,11 +29,18 @@ export class ScannerPage implements OnInit {
           // start scanning
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             this.scannedCodeText = text;
-            console.log("code trouvé");
-            this.checkifCodeIsValid(this.scannedCodeText);
-            this.presentAlert();
-            this.qrScanner.hide(); // hide camera preview
-            scanSub.unsubscribe(); // stop scanning
+            if (text.startsWith('GoStyle')) {
+              try {
+                this.checkifCodeIsValid(this.scannedCodeText.slice(7))
+                this.qrScanner.hide(); // hide camera preview
+                scanSub.unsubscribe(); // stop scanning
+                this.presentOkAlert();
+              } catch (error) {
+                this.presentFailAlert(error);
+              }
+            } else {
+              this.presentFailAlert('Ce code n\'est pas un code GoStyle !');
+            }
           });
 
         } else if (status.denied) {
@@ -46,29 +53,60 @@ export class ScannerPage implements OnInit {
       })
       .catch((e: any) => console.log('Error is', e));
   }
-
-  async presentAlert() {
+  async presentFailAlert(msg) {
     const alert = await this.alertController.create({
-      header: 'Code trouvé!',
-      subHeader: 'Text scanné:',
-      message: this.scannedCodeText,
+      header: 'Code Erroné!',
+      message: msg,
       buttons: [{
-        text: 'Encore!',
-        cssClass: 'secondary',
+        text: 'Réessayer',
+        cssClass: 'primary',
         handler: () => {
           this.scancode();
+        }
+      },
+      {
+        text: 'Annuler',
+        cssClass: 'secondary',
+        handler: () => {
+          this.qrScanner.destroy();
+          return this.router.navigate(['/home']);
         }
       }]
     });
     await alert.present();
   }
+
+  async presentOkAlert() {
+    const alert = await this.alertController.create({
+      header: 'Code trouvé!',
+      message: this.scannedCodeText.slice(7) + " a bien été ajouté à la liste de tes coupons.",
+      buttons: [{
+        text: 'Encore!',
+        cssClass: 'primary',
+        handler: () => {
+          this.scancode();
+        }
+      }, {
+        text: "J'ai fini",
+        cssClass: 'secondary',
+        handler: () => {
+          this.qrScanner.destroy();
+          return this.router.navigate(['/home']);
+        }
+      }
+      ]
+    });
+    await alert.present();
+  }
+
   checkifCodeIsValid(code) {
-    console.log('check if ' + code + 'valide');
+    console.log('check if ' + code + ' valide');
     this.couponService.getCouponByCode(code).subscribe((data) => {
-      console.log("DATA RECUE: ", data);
-      this.tempo = data;
-      console.log("SEND TO ENREGISTREMENT: ", data);
-      this.dbService.addCoupon(this.tempo);
+      try {
+        this.dbService.addCoupon(data);
+      } catch{
+        throw new Error('code inexistant en bdd');
+      }
     });
   }
 }

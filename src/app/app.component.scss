@@ -21,7 +21,10 @@ img {
   font-size: 30px;
   color: #fff;
 }
-.tranparent-bg {
+
+.black-bg {
+  background-color: black;
+}
+.hidden {
   display: none;
-  --ion-background-color: transparent;
 }

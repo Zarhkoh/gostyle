@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -33,13 +34,10 @@ export class AppComponent {
         this.dbService.drop_db();
         console.log("Ajout tables");
         this.dbService.create_tables();
+
         console.log("EVERYTHING OK");
       }
     });
   }
-  showFooterHeader() {
-    if (this.router.url === '/home' || this.router.url === '/login') {
-      return true;
-    }
   }
 }
