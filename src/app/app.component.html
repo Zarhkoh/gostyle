@@ -19,10 +19,10 @@
   <ion-footer
     *ngIf="router.url != '/home' && router.url != '/auth' && router.url != '/register' && router.url != '/login'"
     [ngClass]="{'black-bg' : router.url != '/scanner'}">
-    <div class="spaceBetween black">
-      <ion-icon class="iconFoot" name="home-outline"></ion-icon>
-      <ion-icon class="iconFoot" name="scan-outline"></ion-icon>
-      <ion-icon class="iconFoot" name="list-outline"></ion-icon>
+    <div class="spaceBetween">
+      <ion-icon id="home-footer" [routerLink]="['/home']"class="iconFoot" name="home-outline"></ion-icon>
+      <ion-icon id="scanner-footer" [routerLink]="['/scanner']" class="iconFoot" name="scan-outline"></ion-icon>
+      <ion-icon id="coupon-list-footer" [routerLink]="['/coupon-list']" class="iconFoot" name="list-outline"></ion-icon>
     </div>
   </ion-footer>
 </ion-app>

@@ -4,7 +4,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div *ngFor="let coupon of couponsList" class="divCouponsList">
+  <div *ngFor="let coupon of couponsList" class="divCouponsList">
         <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}</button>
         <div *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
             <p>{{ coupon.description }}</p>
