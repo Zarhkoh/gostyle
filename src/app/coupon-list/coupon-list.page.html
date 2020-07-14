@@ -8,7 +8,8 @@
         <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}</button>
         <div *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
             <p>{{ coupon.description }}</p>
-            <p>Validé : {{ coupon.date_debut | date:"dd/MM/yy" }} au {{ coupon.date_fin | date:"dd/MM/yy" }}</p>
+            <p>Validité : du {{ coupon.date_debut | date:"dd/MM/yyyy" }} au {{ coupon.date_fin | date:"dd/MM/yyyy" }}
+            </p>
         </div>
     </div>
 </ion-content>

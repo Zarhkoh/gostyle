@@ -29,7 +29,7 @@ export class DbService {
   addCoupon(coupon) {
     let data = [coupon.code_coupon, coupon.description, coupon.discount, coupon.date_debut, coupon.date_fin];
     console.log("nature, rdy to db: ", data);
-    this.storage.executeSql('INSERT INTO coupon (code_coupon,discount,description,date_debut,date_fin) VALUES (?,?,?,?,?)', data).then((data) => console.log(JSON.stringify(data)))
+    this.storage.executeSql('INSERT INTO coupon (code_coupon,description,discount,date_debut,date_fin) VALUES (?,?,?,?,?)', data).then((data) => console.log(JSON.stringify(data)))
       .catch(e => console.log("BUG INSERT: ", JSON.stringify(e)));
   }
 
