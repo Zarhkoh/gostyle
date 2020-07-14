@@ -1,8 +1,8 @@
 @font-face {
-    src: url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-    font-family:'Anton';
+    src: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+    font-family: "Anton";
     font-style: normal;
-  }
+}
 
 .bg-image {
     background-image: url("https://i.pinimg.com/originals/b6/a4/56/b6a456e8ed6e863de56de5cae3a525ee.jpg");
@@ -40,14 +40,14 @@
     background-color: rgb(39, 39, 39);
 }
 
-.button-signin, .button-signup  {
+.button-signin,
+.button-signup {
     width: 51%;
     height: 100%;
     font-weight: bold;
     font-size: 1.1em;
     color: white;
-    font-family: 'Anton', sans-serif;
-
+    font-family: "Anton", sans-serif;
 }
 
 .trait {
