@@ -4,7 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { CouponService } from '../service/coupon.service';
 import { Coupon } from '../models/coupon';
 import { DbService } from '../service/db.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scanner',
@@ -16,7 +16,6 @@ export class ScannerPage implements OnInit {
   constructor(private qrScanner: QRScanner, public alertController: AlertController, private couponService: CouponService, private dbService: DbService, private router: Router) {
     this.scancode();
   }
-  tempo;
   scannedCodeText = 'none';
   ngOnInit() {
   }
@@ -30,17 +29,17 @@ export class ScannerPage implements OnInit {
           // start scanning
           const scanSub = this.qrScanner.scan().subscribe((text: string) => {
             this.scannedCodeText = text;
-            if (text.startsWith("GoStyle")) {
+            if (text.startsWith('GoStyle')) {
               try {
-                this.checkifCodeIsValid(this.scannedCodeText.slice(7));
+                this.checkifCodeIsValid(this.scannedCodeText.slice(7))
                 this.qrScanner.hide(); // hide camera preview
                 scanSub.unsubscribe(); // stop scanning
-              } catch{
-                this.presentFailAlert("Ce code n'est pas/plus valide !");
+                this.presentOkAlert();
+              } catch (error) {
+                this.presentFailAlert(error);
               }
-              this.presentOkAlert();
             } else {
-              this.presentFailAlert("Ce code n'est pas un code promo GoStyle !");
+              this.presentFailAlert('Ce code n\'est pas un code GoStyle !');
             }
           });
 
@@ -60,7 +59,7 @@ export class ScannerPage implements OnInit {
       message: msg,
       buttons: [{
         text: 'Réessayer',
-        cssClass: 'secondary',
+        cssClass: 'primary',
         handler: () => {
           this.scancode();
         }
@@ -80,30 +79,34 @@ export class ScannerPage implements OnInit {
   async presentOkAlert() {
     const alert = await this.alertController.create({
       header: 'Code trouvé!',
-      subHeader: 'Text scanné:',
-      message: this.scannedCodeText,
+      message: this.scannedCodeText.slice(7) + " a bien été ajouté à la liste de tes coupons.",
       buttons: [{
         text: 'Encore!',
-        cssClass: 'secondary',
+        cssClass: 'primary',
         handler: () => {
           this.scancode();
         }
-      }]
+      }, {
+        text: "J'ai fini",
+        cssClass: 'secondary',
+        handler: () => {
+          this.qrScanner.destroy();
+          return this.router.navigate(['/home']);
+        }
+      }
+      ]
     });
     await alert.present();
   }
 
   checkifCodeIsValid(code) {
-    console.log('check if ' + code + 'valide');
-    try {
-      this.couponService.getCouponByCode(code).subscribe((data) => {
-        this.tempo = data;
-        console.log("SEND TO ENREGISTREMENT: ", data);
-        this.dbService.addCoupon(this.tempo);
-        return true;
-      });
-    } catch{
-      return false;
-    }
+    console.log('check if ' + code + ' valide');
+    this.couponService.getCouponByCode(code).subscribe((data) => {
+      try {
+        this.dbService.addCoupon(data);
+      } catch{
+        throw new Error('code inexistant en bdd');
+      }
+    });
   }
 }
