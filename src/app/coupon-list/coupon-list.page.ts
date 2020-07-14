@@ -3,7 +3,7 @@ import { CouponService } from '../service/coupon.service';
 import { DbService } from '../service/db.service';
 import { Platform } from '@ionic/angular';
 
-
+import { Coupon } from '../models/coupon';
 
 @Component({
   selector: 'app-coupon-list',
@@ -12,34 +12,25 @@ import { Platform } from '@ionic/angular';
 })
 export class CouponListPage implements OnInit {
 
-  couponList;
-  couponsList;
+  couponsList: Coupon[];
 
   constructor(private couponService: CouponService, private dbService: DbService, private platform: Platform,
   ) { }
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.getCouponList();
     if (!this.platform.is("desktop")) {
       this.getLocalCouponList();
+    } else {
+      this.couponsList = [
+        { code_coupon: "FREE30", discount: 30, description: "30% Sur Jérémy", date_debut: new Date("2020-08-12T00:00:00.000Z"), date_fin: new Date("2020-08-30T00:00:00.000Z") },
+        { code_coupon: "FREE40", discount: 40, description: "40% Sur Jérémy", date_debut: new Date("2020-09-12T00:00:00.000Z"), date_fin: new Date("2020-08-28T00:00:00.000Z") },
+        { code_coupon: "FREE50", discount: 50, description: "50% Sur Jérémy", date_debut: new Date("2020-10-12T00:00:00.000Z"), date_fin: new Date("2020-08-30T00:00:00.000Z") }
+      ]
     }
   }
 
-  getCouponList() {
-    console.log('début fonction get');
-    this.couponsList = this.couponService.getAllCoupons().subscribe((data) => this.couponsList = data);
-    console.log('les coupons:' + this.couponsList);
-  }
-
   getLocalCouponList() {
-    this.couponList = this.dbService.getCouponsList();
-    console.log('les coupons locaux:' + this.couponList);
-  }
-
-  addCoupon() {
-    console.log("service ajout data");
-    let test = this.dbService.inset_coupon_data();
-    console.log("fin ajout data: ");
+    this.couponsList = this.dbService.getCouponsList();
   }
 }

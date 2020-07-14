@@ -7,12 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CouponService {
 
-  url = 'http://localhost:3000/coupons';
+  url = 'http://zarhkoh:3000';
 
   constructor(private http: HttpClient) { }
 
-  getAllCoupons() {
-    return this.http.get(this.url);
+  getCouponByCode(couponCode) {
+    const params = {
+      code_coupon: couponCode
+    };
+    return this.http.get(this.url + "/couponByCodeCoupon", { params });
   }
 
 }

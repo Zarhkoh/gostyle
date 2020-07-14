@@ -28,9 +28,12 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (!this.platform.is("desktop")) {
+        console.log("Lancement autre que desktop");
         this.dbService.createDb();
+        this.dbService.drop_db();
+        console.log("Ajout tables");
         this.dbService.create_tables();
-        this.dbService.inset_coupon_data();
+        console.log("EVERYTHING OK");
       }
     });
   }
