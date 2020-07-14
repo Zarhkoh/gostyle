@@ -39,9 +39,5 @@ export class AppComponent {
       }
     });
   }
-  showFooterHeader() {
-    if (this.router.url === '/login' || this.router.url === '/auth' || this.router.url === '/register') {
-      return true;
-    }
   }
 }
