@@ -82,17 +82,20 @@ describe('App goStyle', () => {
         expect(registerEmail.innerHTML).not.toBeNull();
         expect(registerMDP.innerHTML).not.toBeNull();
         expect(registerBtnValider.innerHTML).not.toBeNull();
+        expect(inputNom.innerHTML).not.toBeNull();
         }).catch(err => {
       });
     });
     it('valide l\'inscription', () => {
+      browser.get('/register');
       inputNom.sendKeys('Delaby');
       inputPrenom.sendKeys('Sullivan');
       inputEmail.sendKeys('zarhkoh@hotmail.fr');
       inputMDP.sendKeys('test');
-      browser.wait(EC.visibilityOf(registerNom), 20000).then(result => {
-       
-        }).catch(err => {
+      registerBtnValider.click
+      browser.wait(EC.visibilityOf(textLogo), 20000).then(result => {
+        expect(btnSignIn.innerHTML).not.toBeNull();
+       }).catch(err => {
       });
     });
 

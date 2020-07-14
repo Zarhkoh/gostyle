@@ -8,7 +8,7 @@ import { User } from '../models/user';
 
 export class UserService {
 
-  url = 'http://zarhkoh:3000'
+  url = 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
 
