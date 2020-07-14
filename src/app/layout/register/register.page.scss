@@ -1,0 +1,44 @@
+.bg-color {
+    background-image: url("https://i.pinimg.com/originals/b6/a4/56/b6a456e8ed6e863de56de5cae3a525ee.jpg");
+    background-color: rgba(0, 0, 0, 0.459);
+    filter: blur(8px);
+    -webkit-filter: blur(3px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-text {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.trait {
+    margin-left: 1em;
+    height: 70%;
+    border-left: 1px solid rgba(255, 255, 255, 0.733);
+    border-radius: 50px;
+}
+
+.item-place {
+    width: 80%;
+    left: 10%;
+    margin: 8px;
+}
+
+.button-register {
+    padding: 1.1em;
+    width: 10em;
+    border-radius: 1px;
+    font-weight: bold;
+}

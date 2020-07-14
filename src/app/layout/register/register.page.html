@@ -1,21 +1,27 @@
 <ion-content>
-  <form [formGroup]="creationForm" (ngSubmit)="createUser()">
-    <ion-item>
+  <div class="bg-color"></div>
+  <form class="bg-text" [formGroup]="creationForm" (ngSubmit)="createUser()">
+    <ion-title>SIGN UP</ion-title>
+    <ion-item class="item-place">
       <ion-label>Nom</ion-label>
+      <div class="trait"></div>
       <ion-input type="text" formControlName="nom"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="item-place">
       <ion-label>Prénom</ion-label>
+      <div class="trait"></div>
       <ion-input formControlName="prenom"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="item-place">
       <ion-label>Email</ion-label>
+      <div class="trait"></div>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="item-place">
       <ion-label>Mot de passe</ion-label>
+      <div class="trait"></div>
       <ion-input type="password" formControlName="pwd"></ion-input>
     </ion-item>
-    <ion-button type="submit" [disabled]="!creationForm.valid">VALIDER</ion-button>
+    <button class="button-register" type="submit" [disabled]="!creationForm.valid">VALIDER</button>
   </form>
 </ion-content>
