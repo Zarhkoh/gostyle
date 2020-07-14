@@ -1,0 +1,21 @@
+<ion-content>
+  <form [formGroup]="creationForm" (ngSubmit)="createUser()">
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input type="text" formControlName="nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prénom</ion-label>
+      <ion-input formControlName="prenom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input type="password" formControlName="pwd"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!creationForm.valid">VALIDER</ion-button>
+  </form>
+</ion-content>

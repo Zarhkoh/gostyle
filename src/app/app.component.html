@@ -2,14 +2,12 @@
   <ion-header *ngIf="router.url != '/home'">
     <ion-toolbar>
       <div class="spaceBetween">
-        <ion-buttons slot="start">
-          <ion-back-button class="iconBack" defaultHref="home">
+        <ion-back-button class="iconBack" defaultHref="home">
 
-          </ion-back-button>
-        </ion-buttons>
-        <!--        <ion-icon class="iconHead" name="chevron-back-outline"></ion-icon>-->
+        </ion-back-button>
         <img src="../../assets/images/logo-blanc.png">
-        <ion-icon class="iconHead" name="power-outline"></ion-icon>
+        <ion-icon class="iconHead" name="power-outline" [routerLink]="['/login']">
+        </ion-icon>
       </div>
     </ion-toolbar>
   </ion-header>
@@ -18,7 +16,9 @@
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 
-  <ion-footer *ngIf="router.url != '/home'" [ngClass]="{'black-bg' : router.url != '/scanner'}">
+  <ion-footer
+    *ngIf="router.url != '/home' && router.url != '/auth' && router.url != '/register' && router.url != '/login'"
+    [ngClass]="{'black-bg' : router.url != '/scanner'}">
     <div class="spaceBetween black">
       <ion-icon class="iconFoot" name="home-outline"></ion-icon>
       <ion-icon class="iconFoot" name="scan-outline"></ion-icon>
