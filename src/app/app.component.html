@@ -8,7 +8,7 @@
         <ion-back-button *ngIf="router.url === '/login' || router.url === '/register' " class="iconBack"
           defaultHref="auth">
         </ion-back-button>
-        <img id="headerLogo" src="../../assets/images/logo-blanc.png">
+        <img id="headerLogo" src="../../assets/images/logo-blanc.png" alt="Logo GoStyle Blanc">
         <ion-icon id="logout-icon" name="power-outline"
           [ngClass]="{'invisibleIconHead': router.url === '/login' || router.url === '/register','iconHead' :router.url !== '/login' && router.url !== '/register'}"
           [routerLink]="['/auth']">
