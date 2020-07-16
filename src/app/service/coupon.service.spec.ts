@@ -10,8 +10,42 @@ describe('CouponService', () => {
     })
   });
 
+  const service: CouponService = TestBed.get(CouponService);
+  
   it('should be created', () => {
-    const service: CouponService = TestBed.get(CouponService);
     expect(service).toBeTruthy();
   });
+
+
+  let right_result = {
+    "couponId": 1,
+    "code_coupon": "FREE30",
+    "discount": 30,
+    "description": "30% de réduction",
+    "date_debut": "2020-03-12T00:00:00.000Z",
+    "date_fin": "2020-08-12T00:00:00.000Z"
+  }
+
+  let false_result = {
+    "couponId": 1,
+    "code_coupon": "FREE30",
+    "discount": 50,
+    "description": "50% de réduction",
+    "date_debut": "2020-03-12T00:00:00.000Z",
+    "date_fin": "2020-08-12T00:00:00.000Z"
+  }
+
+  it (" Doit retourner des donnée égale à rightResult ", () => {
+    service.getCouponByCode("FREE30").subscribe(res => {
+      expect(res).toEqual(right_result)
+    })
+  })
+
+  it (" Doit retourner des donnée égale à rightResult ", () => {
+    service.getCouponByCode("FREE30").subscribe(res => {
+      expect(res).not.toEqual(false_result)
+    })
+  })
+
+
 });
