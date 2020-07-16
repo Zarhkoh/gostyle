@@ -41,7 +41,9 @@ describe('App goStyle', () => {
   const pageScanner = element(by.id('page-scanner'));
 
   //constante Coupons-list
-  const listeCoupons = element(by.id('listeCoupons'));
+  const titreListeCoupons = element(by.id('titleCouponsList'));
+  const coupons = element(by.css('.buttonCoupon'));
+  const coupon = element(by.css('.detailCoupon'));
 
   //constante Footer
   const homeFooter = element(by.id('home-footer'));
@@ -82,24 +84,40 @@ describe('App goStyle', () => {
         expect(registerEmail.innerHTML).not.toBeNull();
         expect(registerMDP.innerHTML).not.toBeNull();
         expect(registerBtnValider.innerHTML).not.toBeNull();
-        expect(inputNom.innerHTML).not.toBeNull();
+        
         }).catch(err => {
       });
     });
-    it('valide l\'inscription', () => {
-      browser.get('/register');
-      inputNom.sendKeys('Delaby');
-      inputPrenom.sendKeys('Sullivan');
-      inputEmail.sendKeys('zarhkoh@hotmail.fr');
-      inputMDP.sendKeys('test');
-      registerBtnValider.click
-      browser.wait(EC.visibilityOf(textLogo), 20000).then(result => {
-        expect(btnSignIn.innerHTML).not.toBeNull();
+    it('affiche les inputs', () => {
+      browser.wait(EC.visibilityOf(registerNom), 20000).then(result => {
+        expect(inputNom.getText()).not.toBeNull();
+        expect(inputPrenom.getText()).not.toBeNull();
+        expect(inputEmail.getText()).not.toBeNull();
+        expect(inputMDP.getText()).not.toBeNull();
        }).catch(err => {
       });
     });
 
-
+    // it('valide l\'inscription', () => {
+    //   //browser.get('/register');
+    //   browser.sleep(100);
+    //   //browser.wait(EC.visibilityOf(registerNom), 20000).then(result => {
+    //   inputNom.click();
+    //   inputNom.sendKeys('Delaby');
+    //   inputPrenom.click();
+    //   inputPrenom.sendKeys('Sullivan');
+    //   inputEmail.click();
+    //   inputEmail.sendKeys('zarhkoh@hotmail.fr');
+    //   inputMDP.click();
+    //   inputMDP.sendKeys('test');
+    //   registerBtnValider.click
+    // //}).catch(err => {
+    // //});
+    //   browser.wait(EC.visibilityOf(textLogo), 20000).then(result => {
+    //     expect(btnSignIn.innerHTML).not.toBeNull();
+    //    }).catch(err => {
+    //   });
+    // });
   });
 
   describe('Page home', () => {
@@ -181,12 +199,31 @@ describe('App goStyle', () => {
 
         it('Arrive bien sur la page mes coupons et affiche bien la listes des coupons', () => {
           browser.get('/scanner');
-          couponListFooter.click;
-          browser.wait(EC.visibilityOf(listeCoupons), 20000).then(result => {
-              expect(listeCoupons.getText()).toContain('les coupons');
+          couponListFooter.click();
+          browser.wait(EC.visibilityOf(titreListeCoupons), 20000).then(result => {
+              expect(titreListeCoupons.getText()).toContain('LISTE DES COUPONS');
+              expect(coupons.count()).toEqual(3);
             }).catch(err => {
             });
         })
+
+        it('trouve bien 3 coupons', () => {
+          browser.wait(EC.visibilityOf(titreListeCoupons), 20000).then(result => {
+              expect(coupons.count()).toEqual(3);
+            }).catch(err => {
+            });
+        })
+
+        // it('affiche les détails du 1er coupons', () => {
+        //   browser.get('/coupon-list')
+        //   coupons[0].click();
+        //   browser.wait(EC.visibilityOf(titreListeCoupons), 20000).then(result => {
+        //     expect(coupon.getText()).not.toBeNull();
+        //     }).catch(err => {
+        //     });
+        // })
+
+        
 
         it('Afficher le header', () => {
           expect(iconBack.innerHTML).not.toBeNull();
