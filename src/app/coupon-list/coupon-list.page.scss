@@ -1,4 +1,6 @@
-#titleCouponsList, .detailCoupon, .divCouponsList {
+#titleCouponsList,
+.detailCoupon,
+.divCouponsList {
     text-align: center;
 }
 
@@ -13,4 +15,10 @@
     font-size: large;
     padding: 20px;
     border-radius: 5px;
+}
+
+.divNoCoupons {
+    margin-top: 10%;
+    text-align: center;
+    color: rgb(172, 172, 172);
 }

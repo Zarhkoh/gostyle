@@ -4,12 +4,20 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let coupon of couponsList" class="divCouponsList">
+    <div *ngFor="let coupon of couponsList" class="divCouponsList">
         <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}</button>
         <div *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
-            <p>{{ coupon.description }}</p>
-            <p>Validité : du {{ coupon.date_debut | date:"dd/MM/yyyy" }} au {{ coupon.date_fin | date:"dd/MM/yyyy" }}
+            <p class="text">{{ coupon.description }}</p>
+            <p class="text">Validité : du {{ coupon.date_debut | date:"dd/MM/yyyy" }} au
+                {{ coupon.date_fin | date:"dd/MM/yyyy" }}
             </p>
         </div>
+    </div>
+    <div *ngIf="couponsList.length == 0" class="divNoCoupons">
+        <p>Vous n'avez pas encore de coupons.</p>
+        <p>Scannez votre premier QR Code pour le voir apparaître ici!</p>
+        <ion-button id="scan-button" color="dark" [routerLink]="['/scanner']">
+            <p>Scanner</p>
+        </ion-button>
     </div>
 </ion-content>
