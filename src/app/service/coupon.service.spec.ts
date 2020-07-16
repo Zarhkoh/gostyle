@@ -24,7 +24,7 @@ describe('CouponService', () => {
     httpMock.verify();
   });  
   
-  const service: CouponService = TestBed.get(CouponService);
+  // const service: CouponService = TestBed.get(CouponService);
   
   it('should be created', () => {
     expect(service).toBeTruthy();
