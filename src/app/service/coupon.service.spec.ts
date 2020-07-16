@@ -9,6 +9,7 @@ describe('CouponService', () => {
   let injector: TestBed;
   let service: CouponService;
   let httpMock: HttpTestingController;
+  
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [HttpClientModule, HttpClientTestingModule],
@@ -19,9 +20,13 @@ describe('CouponService', () => {
     httpMock = injector.get(HttpTestingController);
   });
   
-
+  afterEach(() => {
+    httpMock.verify();
+  });  
+  
+  const service: CouponService = TestBed.get(CouponService);
+  
   it('should be created', () => {
-    
     expect(service).toBeTruthy();
   });
 
@@ -53,9 +58,7 @@ describe('CouponService', () => {
 
     // });
 
-  afterEach(() => {
-    httpMock.verify();
-  });  
+
 
   // let right_result = {
   //   "couponId": 1,
