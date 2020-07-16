@@ -5,12 +5,21 @@
 </ion-header>
 <ion-content>
     <div *ngFor="let coupon of couponsList" class="divCouponsList">
-        <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}</button>
+        <button (click)="setShowAccordion(coupon.code_coupon)" class="buttonCoupon">{{coupon.code_coupon}}
+            <ion-icon class="coupon-arrow" *ngIf="showAccordion != coupon.code_coupon" color="light"
+                ios="ios-arrow-down" name="arrow-down">
+            </ion-icon>
+            <ion-icon class="coupon-arrow" *ngIf="showAccordion == coupon.code_coupon" color="light" ios="ios-arrow-up"
+                name="arrow-up"></ion-icon>
+        </button>
         <div *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
             <p class="text">{{ coupon.description }}</p>
             <p class="text">Validité : du {{ coupon.date_debut | date:"dd/MM/yyyy" }} au
                 {{ coupon.date_fin | date:"dd/MM/yyyy" }}
             </p>
+            <ion-button (click)="deleteCouponFromLocalList(coupon.code_coupon)" color="danger" fill="clear">
+                <p>Supprimer</p>
+            </ion-button>
         </div>
     </div>
     <div *ngIf="couponsList.length == 0" class="divNoCoupons">
