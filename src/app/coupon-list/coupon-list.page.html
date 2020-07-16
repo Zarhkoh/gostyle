@@ -10,12 +10,23 @@
                 class="buttonCoupon">{{coupon.code_coupon}}</ion-button>
         </ion-item>
         <ion-item *ngIf="showAccordion == coupon.code_coupon" class="detailCoupon">
-            <div style="margin: 0 auto;">
+            <div class="couponInfos" >
                 <p>{{ coupon.description }}</p>
                 <p>Validité : du {{ coupon.date_debut | date:"dd/MM/yyyy" }} au
                     {{ coupon.date_fin | date:"dd/MM/yyyy" }}
                 </p>
+                <ion-button (click)="deleteCouponFromLocalList(coupon.code_coupon)" color="danger" fill="clear">
+                    <p>Supprimer</p>
+                </ion-button>
             </div>
+
         </ion-item>
     </ion-item-group>
+    <div *ngIf="couponsList.length == 0" class="divNoCoupons">
+        <p>Vous n'avez pas encore de coupons.</p>
+        <p>Scannez votre premier QR Code pour le voir apparaître ici!</p>
+        <ion-button id="scan-button" color="dark" [routerLink]="['/scanner']">
+            <p>Scanner</p>
+        </ion-button>
+    </div>
 </ion-content>

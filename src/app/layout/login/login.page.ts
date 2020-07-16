@@ -27,7 +27,6 @@ export class LoginPage implements OnInit {
 
   loginUser() {
     if (this.creationForm) {
-      console.log(this.creationForm.value);
       this.userService
         .setLogin(this.creationForm.value)
         .subscribe(data => this.handleSuccess(data), error => this.handleError(error));

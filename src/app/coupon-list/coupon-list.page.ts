@@ -12,15 +12,16 @@ import { Coupon } from '../models/coupon';
 })
 export class CouponListPage implements OnInit {
   showAccordion;
-
-  couponsList: Coupon[];
-
+  device;
+  couponsList: Coupon[] = [];
   constructor(private couponService: CouponService, private dbService: DbService, private platform: Platform,
   ) { }
 
   ngOnInit() {
+    this.device = this.platform;
+    console.log(this.device);
     console.log('ngOnInit');
-    if (!this.platform.is("desktop")) {
+    if (!this.device.is('desktop')) {
       this.getLocalCouponList();
     } else {
       this.couponsList = [
@@ -35,10 +36,26 @@ export class CouponListPage implements OnInit {
     this.couponsList = this.dbService.getCouponsList();
   }
   deleteCouponFromLocalList(couponCode) {
-    this.dbService.deleteCouponByCode(couponCode);
-  }
+    console.log("tentative de suppression de:" + couponCode + ".");
+    if (!this.device.is('desktop')) {
+      try {
+        this.dbService.deleteCouponByCode(couponCode);
+      } catch (error) {
+      }
+    }
+    this.couponsList.forEach(coupon => {
+      if (coupon.code_coupon === couponCode) {
+        let index = this.couponsList.indexOf(coupon);
+        this.couponsList.splice(index, 1);
+      }
+    });
 
+  }
   setShowAccordion(data) {
-    this.showAccordion = data;
+    if (this.showAccordion === data) {
+      this.showAccordion = '';
+    } else {
+      this.showAccordion = data;
+    }
   }
 }
