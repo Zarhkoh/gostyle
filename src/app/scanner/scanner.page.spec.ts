@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ScannerPage } from './scanner.page';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
 
 describe('ScannerPage', () => {
@@ -12,7 +13,7 @@ describe('ScannerPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers:[QRScanner, HttpClient, HttpHandler],
+      providers:[QRScanner, HttpClient, HttpHandler, SQLite],
       declarations: [ ScannerPage ],
       imports: [IonicModule.forRoot(),RouterTestingModule]
     }).compileComponents();

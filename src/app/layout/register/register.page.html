@@ -3,25 +3,25 @@
   <form class="bg-text" [formGroup]="creationForm" (ngSubmit)="createUser()">
     <ion-title>SIGN UP</ion-title>
     <ion-item class="item-place">
-      <ion-label>Nom</ion-label>
+      <ion-label id="register-nom">Nom</ion-label>
       <div class="trait"></div>
-      <ion-input type="text" formControlName="nom"></ion-input>
+      <ion-input id="input-nom" type="text" formControlName="nom"></ion-input>
     </ion-item>
     <ion-item class="item-place">
-      <ion-label>Prénom</ion-label>
+      <ion-label id="register-prenom">Prénom</ion-label>
       <div class="trait"></div>
-      <ion-input formControlName="prenom"></ion-input>
+      <ion-input id="input-prenom" formControlName="prenom"></ion-input>
     </ion-item>
     <ion-item class="item-place">
-      <ion-label>Email</ion-label>
+      <ion-label id="register-email">Email</ion-label>
       <div class="trait"></div>
-      <ion-input formControlName="email"></ion-input>
+      <ion-input id="input-email" formControlName="email"></ion-input>
     </ion-item>
     <ion-item class="item-place">
-      <ion-label>Mot de passe</ion-label>
+      <ion-label id="regiter-mdp">Mot de passe</ion-label>
       <div class="trait"></div>
-      <ion-input type="password" formControlName="pwd"></ion-input>
+      <ion-input id="input-mdp" type="password" formControlName="pwd"></ion-input>
     </ion-item>
-    <button class="button-register" color="light" type="submit" [disabled]="!creationForm.valid">VALIDER</button>
+    <button id="register-btn-valider" color="light" class="button-register" type="submit" [disabled]="!creationForm.valid">VALIDER</button>
   </form>
 </ion-content>

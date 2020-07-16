@@ -1,6 +1,12 @@
-#titleCouponsList,
-.detailCoupon,
-.divCouponsList {
+
+#titleCouponsList {
+    font-weight: bold;
+}
+.couponInfos{
+  style="margin: 0 auto;"
+}
+
+#titleCouponsList, .detailCoupon, .divCouponsList {
     text-align: center;
 }
 
@@ -9,12 +15,13 @@
 }
 
 .buttonCoupon {
-    background-color: rgba(255, 255, 255, 0.7);
+    // background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
-    font-weight: bold;
+    height: 100%;
+    // font-weight: bold;
     font-size: large;
     padding: 20px;
-    border-radius: 5px;
+    // border-radius: 5px;
 }
 
 .divNoCoupons {
